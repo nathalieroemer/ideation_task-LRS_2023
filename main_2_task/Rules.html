@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    <div id="title">
+       Rules
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<div id="content">
+ <u><b>Rules</b></u>
+    <p>When illustrating words, there are some <b>rules</b>:</p>
+    <ul>
+        <li>Work inside the illustration area.</li>
+        <li>In the illustration area, you should illustrate words and not write them.</li>
+        <li>Your illustrations may not include any symbol that is depicted on the keyboard (for example, illustrations that include “&#10132;”, “8”, “b”, “@”, “>” or “+” are not permitted).</li>
+        <li>Illustrate only one word at a time. Terms that consist of multiple words are not permitted and will not be evaluated.</li>
+        <li>You may only illustrate each word once.</li>
+        <li>Your illustrations may not include political, offensive, or inappropriate content.</li>
+        <li>The word you illustrate should be included in <b>a standard American English dictionary</b>.</li>
+    </ul>
+    <p>After this task, we will evaluate if your illustrations followed the rules.</p>
+
+</div>
+
+<br>
+
+<br>
+
+<button class="otree-btn-next btn btn-primary">Next</button>
+<br>
+<br>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    sessionStorage.setItem("p6_rules", "true");
+     // Take the new contents:
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c6", content)
+        sessionStorage.setItem("t6", title)
+    }
+</script>
+{% endblock %}

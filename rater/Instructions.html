@@ -1,0 +1,75 @@
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{{ block title }}
+<div id="title">
+      Instructions
+</div>
+{{ endblock }}
+
+{{ block content }}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'InstructionsRater.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+
+<div id="content">
+    <p>
+        Next, you will see {{ C.NUM_ROUNDS }} illustrations consecutively on your screen.
+        These illustrations were created by workers in a prior task.
+        These workers' task was to  illustrate words, such as objects, items or actions with a provided set of elements.
+        The words could be chosen freely and had to consist of <b> only one </b> (American English) word without any
+        special characters.
+    </p>
+    <br>
+    <p>
+        <b><u>Task</u></b>
+    </p>
+    <p>
+        <b>Your task is to identify the illustrated words.</b>
+        In order to receive payment for an illustration, you must enter the <b> exact word </b>
+        that the other worker assigned to that illustration.
+    </p>
+    <p>
+        Please note that the words were illustrated by different workers.
+        This means that it is possible to see more than one illustration of the same word.
+    </p>
+
+    <br>
+
+    <p>
+        <b><u>Payment</u></b>
+    </p>
+    <p>
+        You receive <b>£1.00</b> for participating in the task.
+        In addition, you receive <b>£0.10</b> for each illustration that you correctly identify.
+        You will receive your payment only if you complete the entire task.
+    </p>
+
+    <br>
+</div>
+
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    sessionStorage.setItem("p3_instr", "true");
+
+     // Take the new contents:
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c2", content)
+        sessionStorage.setItem("t2", title)
+    }
+</script>
+
+{% endblock %}

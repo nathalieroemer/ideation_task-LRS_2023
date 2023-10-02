@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    <div id="title">
+       Your task
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<div id="content">
+  <u><b>Task</b></u>
+    <p>Your task is to think of a word and illustrate it in the illustration area.
+        To do so, you can use all or some of the objects provided in the object area.</p>
+      <p>The goal is to submit <b>as many innovative illustrations as possible</b>.</p>
+
+    <p><b>Innovative</b> illustrations are:</p>
+    <ul>
+        <li><b>original</b>, that is, the illustrated word is not among a random selection of 100 illustrations by other workers in this task.
+        <li><b>and</b> can be <b>identified</b> by a relatively large fraction of individuals, who only see the illustration and have to identify the illustrated word. The more individuals identify the illustration, the better the illustration.</li>
+    </ul>
+    <p>Specifically, an illustration is considered <b>innovative</b> if it is among the <b>best 10%</b> illustrations submitted by workers in this task.</p>
+
+    <u><b>Time</b></u>
+    <p>You have a total of <b>20 minutes</b> for this task. Only illustrations <b>submitted</b> within these 20 minutes will be considered for payment.</p>
+
+    <u><b>Payment</b></u>
+{{ if treat == 1 }}
+    <p> You will be paid <b>10 Tokens</b> for this task.</p>
+    {{ elif treat == 2 }}
+   <p> You will be paid <b>10 Tokens</b> for each submitted illustration. You will receive the payment
+       for each submitted illustration that follows the above specified rules.
+    {{ elif treat == 3 }}
+    <p> You will be paid <b>10 Tokens</b> for each submitted <b>innovative</b> illustration. You will receive the payment for each submitted innovative illustrations
+        that follows the above specified rules</b>.</p>
+    {{ endif }}
+</div>
+
+<br>
+
+<br>
+
+<button class="otree-btn-next btn btn-primary">Next</button>
+<br>
+<br>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    sessionStorage.setItem("p5_instr", "true");
+     // Take the new contents:
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c5", content)
+        sessionStorage.setItem("t5", title)
+    }
+</script>
+{% endblock %}

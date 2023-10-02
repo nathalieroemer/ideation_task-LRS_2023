@@ -1,0 +1,194 @@
+
+{{ block styles }}
+<link rel="stylesheet" type="text/css" href="{{ static 'style_rater.css' }}">
+<link rel="stylesheet" type="text/css" href="{{ static 'style_material.css' }}">
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+
+<style>
+.container_outer {
+    margin-bottom: 20px;
+    border: 0px solid #ddd;
+    overflow: hidden;
+}
+.margin {
+  height: 425px;
+  width: 480px;
+  border-radius: 15px;
+  border-bottom: 5px solid #dbdbdb;
+}
+
+.container_inner {
+    background-color: #fff;
+    padding: 20px;
+    border: 5px solid #ddd;
+}
+
+</style>
+{{ endblock }}
+{% block title %}
+   Task
+{% endblock %}
+
+
+{{ block content }}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'InstructionsRater.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+<p>
+    You receive <b>£0.10</b> for each correctly identified word.
+    A word is correctly identified if you enter the <b>exact word</b> that the other worker assigned to that
+    illustration.
+</p>
+
+<p>
+    <label for="word_guess">Please write down the word that is illustrated below.</label>
+    <br><br>
+    <input class="textinput" name="word_guess" id="word_guess" oninput="validateGuess(document.getElementById('word_guess').value)">
+</p>
+
+
+<div id="container_outer" class="container_outer">
+    <div id="margin_div" class="margin">
+    <div id="container_inner" class="container_inner">
+        <div id=selecto class="selecto-area">
+                                <div id="word_im1" class="word-div"></div>
+            <div style="top: 460px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc1"></div>
+            <div style="top: 485px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc2"></div>
+            <div style="top: 510px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc3"></div>
+
+            <div style="top: 460px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc1"></div>
+            <div style="top: 485px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc2"></div>
+            <div style="top: 510px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc3"></div>
+
+            <div style="top: 460px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec1"></div>
+            <div style="top: 485px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec2"></div>
+            <div style="top: 510px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec3"></div>
+
+            <div style="top: 460px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc1"></div>
+            <div style="top: 485px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc2"></div>
+            <div style="top: 510px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc3"></div>
+
+            <div style="top: 460px; left: 240px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros1"></div>
+            <div style="top: 460px; left: 260px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros2"></div>
+            <div style="top: 460px; left: 280px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros3"></div>
+            <div style="top: 460px; left: 300px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros4"></div>
+
+            <div style="top: 460px; left: 350px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas1"></div>
+            <div style="top: 460px; left: 370px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas2"></div>
+            <div style="top: 460px; left: 390px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas3"></div>
+            <div style="top: 460px; left: 410px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas4"></div>
+
+            <div style="top: 545px; left: 10px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow1"></div>
+            <div style="top: 545px; left: 55px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow2"></div>
+            <div style="top: 545px; left: 100px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow3"></div>
+            <div style="top: 545px; left: 145px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow4"></div>
+            <div style="top: 545px; left: 190px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow5"></div>
+            <div style="top: 545px; left: 235px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow6"></div>
+
+            <div style="top: 525px; left: 320px; min-height: 10px!important; min-width: 6px!important" class="blackcircle" id="blac1"></div>
+            <div style="top: 525px; left: 400px; min-height: 10px!important; min-width: 6px!important" class="blackcircle" id="blac2"></div>
+        </div>
+        </div>
+</div>
+    <div class="preview" style="top: 425px; left: 0px; display: inline;" id="id_preview" ></div>
+</div>
+
+<button class="otree-btn-next btn btn-primary" style="position: absolute; top: 800px" onclick="validateGuess(document.getElementById('word_guess').value)">Next</button>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+    sessionStorage.setItem("p3_task", "true");
+
+    var forbiddenchars = /[\\ @!?$€£&%=+#"§/(){}`´'*~,;.:_^°<>²³|µäüöÄÖÜßÀÁÂÃÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕØÙÚÛÝàáâãåæçèéêëìíîïðñòóôõøùúûýÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž-]/;
+    var forbiddenspace = /[ ]/;
+    var numbers = /[1234567890]/;
+
+    // Load the dictionary:
+    AmericanEnglish = js_vars.dictionary
+    console.log(AmericanEnglish)
+
+    // Validate the guessed word
+    function validateGuess (word_guess) {
+        console.log("this is the guess", word_guess)
+        if (word_guess !=="") {
+            if (forbiddenspace.test(word_guess)) {
+                document.getElementById("word_guess").setCustomValidity('The illustrated words consist of one word only (no blanks).');
+                document.getElementById("word_guess").reportValidity();
+            } else if (forbiddenchars.test(word_guess)) {
+                document.getElementById("word_guess").setCustomValidity('The illustrated words do not include any symbols');
+                document.getElementById("word_guess").reportValidity();
+            } else if (numbers.test(word_guess)) {
+                document.getElementById("word_guess").setCustomValidity('The illustrated words do not contain any numbers.');
+                document.getElementById("word_guess").reportValidity();
+            } else if (!AmericanEnglish.includes(word_guess.toLowerCase())) {
+                document.getElementById('word_guess').setCustomValidity('Please check the spelling of the word.');
+                document.getElementById('word_guess').reportValidity();
+            } else {
+                document.getElementById("word_guess").setCustomValidity('');
+                document.getElementById("word_guess").reportValidity();
+            }
+        }
+    }
+</script>
+
+<script>
+
+// Recreate the illustrations using the information stored and hiding everything outside the container
+window.onload=function(){
+    let changesList = js_vars.position_var;
+    applyStoredChanges(changesList);
+    hideElementsOutsideContainer();
+};
+
+var elementids = [
+    'yelc1', 'yelc2', 'yelc3', 'redc1', 'redc2', 'redc3', 'grec1', 'grec2', 'grec3',
+    'bluc1', 'bluc2', 'bluc3', 'bros1', 'bros2', 'bros3', 'bros4', 'blas1', 'blas2',
+    'blas3', 'blas4', 'bbow1', 'bbow2', 'bbow3', 'bbow4', 'bbow5', 'bbow6', 'blac1', 'blac2'
+]
+
+// Function applies changes to the objects to recreate the illustration
+function applyStoredChanges(changesList) {
+    const changes = JSON.parse(changesList);
+    elementids.forEach(id => {
+      const item = document.getElementById(id);
+      const change = changes[id];
+
+      if (change) {
+        item.style.top = change.top;
+        item.style.left = change.left;
+        item.style.width = change.width;
+        item.style.height = change.height;
+        item.style.transform = change.transform;
+        item.style.zIndex = change.zIndex;
+            }
+    });
+};
+
+// Function hides elements outside the container (in addition, we have a div in the HTML covering them as some of them may be overlapping)
+function hideElementsOutsideContainer() {
+    // Hide elements that are outside the inner container
+    const innerContainer = document.getElementById(`container_inner`);
+    const innerContainerRect = innerContainer.getBoundingClientRect();
+    const allElements = innerContainer.querySelectorAll('.yellowcircle, .redcircle, .greencircle, .bluecircle, .brownstick, .blackstick, .bow, .blackcircle');
+    allElements.forEach(element => {
+        const elementRect = element.getBoundingClientRect();
+        if (
+            elementRect.bottom < innerContainerRect.top ||
+            elementRect.top > innerContainerRect.bottom ||
+            elementRect.right < innerContainerRect.left ||
+            elementRect.left > innerContainerRect.right
+        ) {
+            element.style.display = 'none';
+        } else {
+            element.style.display = 'block';
+        }
+    });
+};
+
+</script>
+{{ endblock }}

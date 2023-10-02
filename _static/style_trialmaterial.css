@@ -1,0 +1,447 @@
+/* the styling for the triangle item */
+.triangle {
+  background-image: linear-gradient(to right top, yellowgreen 0%, yellowgreen 50%, transparent 50%);
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: auto;
+    z-index: 1500;
+}
+
+/* the styling for the blue cube item */
+.blue_cube {
+    border-radius: 2px;
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    background: dodgerblue;
+    --color: #4af;
+    pointer-events: auto;
+    position: absolute;
+    z-index: 1500;
+}
+
+/* the styling for the red cube item */
+.red_cube {
+    border-radius: 2px;
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    background: #6e0101;
+    --color: #4af;
+    pointer-events: auto;
+    position: absolute;
+    z-index: 1500;
+
+}
+
+/* container for whole image building area */
+#container_outer {
+      width: 490px;
+      height: 532px;
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+    position: relative;
+    overflow: visible;
+    background: none;
+    /* pointer-events is needed to specify under which circumstances the element can be target to a mouse-event (click)
+     * it is necessary in order to include mouse-click events with the element */
+    pointer-events: auto;
+    /* the z-index specifies the "depth"/order of an element; an element with higer z-index value overlaps the other one */
+    z-index: 0;
+    }
+
+/* container in which image is shown */
+.container_inner {
+    width: 480px;
+    height: 425px;
+    position: relative;
+    border-radius: 15px;
+    border: #dbdbdb 5px solid;
+    z-index:-1000;
+    background:none;
+}
+
+/* container which contains items at start */
+.container_material {
+    width:480px;
+    height:65px;
+    border-radius: 15px;
+    background: #dbdbdb;
+    position: relative;
+    border: #dbdbdb 5px solid;
+    z-index:-10000;
+}
+
+/* container in which preview is shown (overlies container_mine), see index.ts to know when it's shown */
+.preview {
+    width:480px;
+    height:90px;
+    border-radius: 0px;
+    background: white;
+    position: absolute;
+    border: white 5px solid;
+    z-index: 500000;
+    display: none;
+}
+
+/* area between container_mine and container_small -> transparent, only for space between the two */
+.space {
+    width: 490px;
+    height: 25px;
+    background: transparent;
+    overflow:hidden;
+    position: relative;
+    z-index:-10000;
+    pointer-events:none;
+    }
+
+/* the area in which selecto methods are used; see index.ts for functionality */
+.selecto-area {
+}
+
+/* no transition between different states of cube (between selection and deselection) */
+.moveable #selecto1 .cube {
+    transition: none;
+}
+
+/* custom styling for control-box when item is selected */
+.selecto-area .selected {
+    color: #fff;
+    background: var(--color);
+}
+
+/* custom styling for the moveable-elements (here the control-box)
+ * !important is important to make sure to override the default styling of moveable */
+.moveable-control {
+    position: absolute!important;
+    width: 9px!important;
+    height: 9px!important;
+    border-radius: 50%!important;
+    border: 1px solid #fff!important;
+    box-sizing: border-box!important;
+    background: #4af!important;
+    margin-top: -5px!important;
+    margin-left: -5px!important;
+    z-index: 100000!important;  /* high z-index to make sure it's shown above all other elements */
+}
+
+/* usually, moveable items have dot in the middle when clicked
+ * here, dot should not be shown, therefore transparent */
+.moveable-control.moveable-origin {
+    border-color: transparent;
+    background: transparent;
+    width: 0px!important;
+    height: 0px!important;
+    margin-top: 0px;
+    margin-left: 0px;
+    pointer-events: none;
+    z-index: 100000!important;
+}
+
+/* custom styling for the rotation button/line
+ * green (not blue) for explanation of task to be clear */
+.moveable-line.moveable-rotation-line .moveable-control {
+    border-color: yellowgreen!important;
+    background:yellowgreen!important;
+    cursor: alias;
+    z-index: 100000!important;
+}
+
+/* specifies the look of an element when it's rightclicked
+ * it gets a blue border and becomes slightly opaque */
+.rightclick {
+   border-color: #007bff;
+    border: 2px solid #007bff;
+    opacity: 70%!important;
+}
+
+/* the styling for the right-click-menu */
+#menu {
+  display: block;
+  background-color: white;
+  padding: 10px 0px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px lightgrey;
+  position: absolute;
+  transform-origin: center;
+  z-index: 200000;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+#menu.show {
+  opacity: 1;
+  transform: scale(1);
+  transform-origin: top left;
+}
+
+/* the styling for an element/option in the right-click-menu when the cursor is above it */
+.menu-item {
+  display: block;
+  padding: 10px 30px;
+  transition: 0.1s;
+  color: #666;
+}
+
+/* the styling for the cursor in the right-click-menu (when it's above an element/option)
+ * it becomes a pointer (hand symbol) */
+.menu-item:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+/* the styling for the out-click div (not shown, just necessary for some Javascript to work: when right-click-menu shall
+ * not longer be shown the participant can click anywhere on the out-click div)
+ * covers basically whole screen */
+#out-click {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -500!important;
+  display: none;
+}
+
+/* styling for the custom next-button that is sometimes used when generic next-button can't be used (e.g. "submit" button) */
+.my_nextbutton {
+     cursor: pointer;
+     display: inline-block;
+    font-weight: 400;
+     color: #fff;
+     background-color: #007bff;
+     border-color: #007bff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+     }
+
+.moveable-control.moveable-rotation-control {
+            background: #9acd32!important;
+}
+
+/* preview button */
+.prev-btn {
+    top: 23em;
+    left: 2%;
+    background-color:#dbdbdb;
+    border-color: #dbdbdb;
+}
+
+
+/* container for whole image building area */
+#container_outer {
+      width: 490px;
+      height: 532px;
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+    position: relative;
+    overflow: visible;
+    background: none;
+    /* pointer-events is needed to specify under which circumstances the element can be target to a mouse-event (click)
+     * it is necessary in order to include mouse-click events with the element */
+    pointer-events: auto;
+    /* the z-index specifies the "depth"/order of an element; an element with higer z-index value overlaps the other one */
+    z-index: 0;
+    }
+
+/* container in which image is shown */
+.container_inner {
+    width: 480px;
+    height: 425px;
+    position: relative;
+    border-radius: 15px;
+    border: #dbdbdb 5px solid;
+    z-index:-1000;
+    background:none;
+}
+
+/* container which contains items at start */
+.container_material {
+    width:480px;
+    height:65px;
+    border-radius: 15px;
+    background: #dbdbdb;
+    position: relative;
+    border: #dbdbdb 5px solid;
+    z-index:-10000;
+}
+
+/* container in which preview is shown (overlies container_mine), see index.ts to know when it's shown */
+.preview {
+    width:480px;
+    height:90px;
+    border-radius: 0px;
+    background: white;
+    position: absolute;
+    border: white 5px solid;
+    z-index: 500000;
+    display: none;
+}
+
+/* area between container_mine and container_small -> transparent, only for space between the two */
+.space {
+    width: 490px;
+    height: 25px;
+    background: transparent;
+    overflow:hidden;
+    position: relative;
+    z-index:-10000;
+    pointer-events:none;
+    }
+
+/* the area in which selecto methods are used; see index.ts for functionality */
+.selecto-area {
+}
+
+/* no transition between different states of cube (between selection and deselection) */
+.moveable #selecto1 .cube {
+    transition: none;
+}
+
+/* custom styling for control-box when item is selected */
+.selecto-area .selected {
+    color: #fff;
+    background: var(--color);
+}
+
+/* custom styling for the moveable-elements (here the control-box)
+ * !important is important to make sure to override the default styling of moveable */
+.moveable-control {
+    position: absolute!important;
+    width: 9px!important;
+    height: 9px!important;
+    border-radius: 50%!important;
+    border: 1px solid #fff!important;
+    box-sizing: border-box!important;
+    background: #4af!important;
+    margin-top: -5px!important;
+    margin-left: -5px!important;
+    z-index: 100000!important;  /* high z-index to make sure it's shown above all other elements */
+}
+
+/* usually, moveable items have dot in the middle when clicked
+ * here, dot should not be shown, therefore transparent */
+.moveable-control.moveable-origin {
+    border-color: transparent;
+    background: transparent;
+    width: 0px!important;
+    height: 0px!important;
+    margin-top: 0px;
+    margin-left: 0px;
+    pointer-events: none;
+    z-index: 100000!important;
+}
+
+/* custom styling for the rotation button/line
+ * green (not blue) for explanation of task to be clear */
+.moveable-line.moveable-rotation-line .moveable-control {
+    border-color: yellowgreen!important;
+    background:yellowgreen!important;
+    cursor: alias;
+    z-index: 100000!important;
+}
+
+/* specifies the look of an element when it's rightclicked
+ * it gets a blue border and becomes slightly opaque */
+.rightclick {
+   border-color: #007bff;
+    border: 2px solid #007bff;
+    opacity: 70%!important;
+}
+
+/* the styling for the right-click-menu */
+#menu {
+  display: block;
+  background-color: white;
+  padding: 10px 0px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px lightgrey;
+  position: absolute;
+  transform-origin: center;
+  z-index: 200000;
+  opacity: 0;
+  transform: scale(0);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+#menu.show {
+  opacity: 1;
+  transform: scale(1);
+  transform-origin: top left;
+}
+
+/* the styling for an element/option in the right-click-menu when the cursor is above it */
+.menu-item {
+  display: block;
+  padding: 10px 30px;
+  transition: 0.1s;
+  color: #666;
+}
+
+/* the styling for the cursor in the right-click-menu (when it's above an element/option)
+ * it becomes a pointer (hand symbol) */
+.menu-item:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+/* the styling for the out-click div (not shown, just necessary for some Javascript to work: when right-click-menu shall
+ * not longer be shown the participant can click anywhere on the out-click div)
+ * covers basically whole screen */
+#out-click {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -500!important;
+  display: none;
+}
+
+/* styling for the custom next-button that is sometimes used when generic next-button can't be used (e.g. "submit" button) */
+.my_nextbutton {
+     cursor: pointer;
+     display: inline-block;
+    font-weight: 400;
+     color: #fff;
+     background-color: #007bff;
+     border-color: #007bff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+     }
+
+.moveable-control.moveable-rotation-control {
+            background: #9acd32!important;
+}
+
+/* hide control box when submitting */
+  .hidden-control-box {
+    visibility: hidden !important; /* or display: none; */
+      display: none !important;
+  }

@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    <div id="title">
+       Your extra bonus payment
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<div id="content">
+    <p>Now you can choose which rule should determine your extra bonus payment.
+        </p>
+    <p>Under <b>Rule 1</b>, your extra bonus payment is:
+        <ul>
+        <li><b>£1.00</b> if your illustration is <b>innovative</b>.</li>
+    <li><b>£0.00</b> otherwise.</li>
+        </ul>
+    </p>
+
+    <p>Under <b>Rule 2</b>, your extra bonus payment is:
+        <ul>
+        <li><b>£0.50</b> regardless of whether your illustration is <b>innovative</b> or not.</li>
+        </ul>
+    </p>
+{{ formfields }}
+
+</div>
+<br>
+
+<br>
+
+<button class="otree-btn-next btn btn-primary">Next</button>
+<br>
+<br>
+
+{% endblock %}

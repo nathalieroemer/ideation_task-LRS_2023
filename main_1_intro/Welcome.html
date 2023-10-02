@@ -1,0 +1,79 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+    <div id="title">
+        Welcome to this study
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<div id="content">
+    <p>
+        This study will take approximately 30 minutes. To be eligible for payment, you have to perform all tasks within the next 2 hours. </p>
+    <p> Please carefully read the following instructions before starting to work. Note that there will be attention checks.
+        If you do not pass them, you are not eligible to participate in this study.
+    </p>
+
+<p> You will receive a <b> fixed payment of £3.50</b>.
+During the course of this study, you can additionally earn <b>Tokens</b> which will be exchanged into Pounds and paid to you within the next 6 days.
+
+    <p align="center">
+<strong>The exchange rate will be:
+    1 Token = £{{ conversion|to2 }} </strong></p>
+
+<p>
+    <p>
+        At any point in time, you will be able to review previous instruction by clicking on
+        "Click to review previous instructions" in the right top corner of your screen.
+    </p>
+</div>
+
+<br>
+
+<form>
+    <p>
+        <label for="wid">
+            Please indicate your Prolific ID.
+        </label>
+    </p>
+    <p>
+        <input class="textinput" name="workerid" id="wid" required oninvalid="setCustomValidity('Please enter your worker ID.')" oninput="setCustomValidity('')">
+    </p>
+</form>
+
+<br>
+
+<button class="otree-btn-next btn btn-primary">Next</button>
+<br>
+<br>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Store current page and content for previous instructions
+    sessionStorage.setItem("p1_welcome", "true");
+
+     // Take the new contents:
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c1", content)
+        sessionStorage.setItem("t1", title)
+    }
+</script>
+{% endblock %}

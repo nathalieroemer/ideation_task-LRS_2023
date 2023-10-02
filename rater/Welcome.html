@@ -1,0 +1,69 @@
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{{ block title }}
+<div id="title">
+      Welcome to this task
+</div>
+{{ endblock }}
+
+{{ block content }}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'InstructionsRater.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+<div id="content">
+    <p>
+        You will receive a fixed payment of <b>£1.00</b>. Additionally, you can receive a bonus of up
+        to <b>£5.00</b>.
+    </p>
+    <p>
+        Please carefully read the following instructions before starting to work.
+        To be eligible for payment, you have to perform all tasks within the next 60 minutes.
+    </p>
+    <p>
+        At any point in time, you will be able to review previous instructions by clicking on
+        "Click to review previous instructions" in the top right corner of your screen.
+    </p>
+
+    <br>
+
+
+<form>
+    <p>
+        <label for="wid">
+            Please indicate your Prolific ID.
+        </label>
+    </p>
+    <p>
+        <input class="textinput" name="workerid" id="wid" required oninvalid="setCustomValidity('Please enter your worker ID.')" oninput="setCustomValidity('')">
+    </p>
+</form>
+
+<br>
+
+</div>
+    {{ next_button }}
+{{ endblock }}
+
+
+
+{% block scripts %}
+<script>
+    /* First, delete any old entries: */
+    sessionStorage.clear()
+    sessionStorage.setItem("p1_welcome", "true");
+    /* Then, fill the new entries, page by page: */
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c1", content)
+        sessionStorage.setItem("t1", title)
+    }
+</script>
+{% endblock %}

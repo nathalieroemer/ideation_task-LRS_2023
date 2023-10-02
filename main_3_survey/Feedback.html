@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree staticfiles %}
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+    {% block title %}
+       Your Feedback
+    {% endblock %}
+{% block content %}
+{{ formfields }}
+
+<br>
+    {{ next_button }}
+<br>
+
+{% endblock %}

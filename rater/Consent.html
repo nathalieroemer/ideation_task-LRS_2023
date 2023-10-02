@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Your participation in this study
+{% endblock %}
+
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block content %}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'InstructionsRater.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<p>
+    If you wish to withdraw from the study, you can close your browser window at any time. If you wish to continue and
+    participate in the study, please confirm the following.
+</p>
+
+<form>
+    <label for="c1">
+        <input type="checkbox" id="c1" value ="1" name="consent1" required oninvalid="this.setCustomValidity('If you do not agree, you cannot participate in the study.')" onclick="this.setCustomValidity('')">
+        I understand that my participation is totally voluntary. I am free to withdraw at any time without having to give a reason.
+    </label>
+    <br>
+    <label for="c2">
+        <input type="checkbox" id="c2" value ="1" name="consent2" required oninvalid="this.setCustomValidity('If you do not agree, you cannot participate in the study.')" onclick="this.setCustomValidity('')">
+        I agree that the data gathered in this study may be stored anonymously and securely.
+    </label>
+    <br>
+    <label for="c3">
+        <input type="checkbox" id="c3" value ="1" name="consent3" required oninvalid="this.setCustomValidity('If you do not agree, you cannot participate in the study.')" onclick="this.setCustomValidity('')">
+        I agree to take part in the study.
+    </label>
+</form>
+
+<br>
+<br>
+<br>
+
+<button class="otree-btn-next btn btn-primary">Next</button>
+
+<br>
+<br>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    sessionStorage.setItem("p2_consent", "true");
+
+</script>
+{% endblock %}

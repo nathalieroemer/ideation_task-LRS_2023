@@ -1,0 +1,245 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div id="title">
+    Try it yourself!
+</div>
+
+<meta charset="UTF-8">
+{% endblock %}
+
+{% block styles %}
+ <link rel="stylesheet" type="text/css" href="{{ static 'style_trialmaterial.css' }}">
+{% endblock %}
+
+
+{% block content %}
+
+<body>
+<!-- Add the link to the previous instructions: -->
+<div class="text-previnstr" id="previnstr" style="position: absolute; top: 30px; right: 30px; width: 300px; text-align: right; cursor: pointer; color: dimgrey; text-decoration: underline">
+    <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes')">
+            Click to review previous instructions
+    </a>
+</div>
+
+<div class="moveable-control-box hidden-control-box">
+  <!-- ... -->
+</div>
+
+<div id="content">
+    <p>
+        To test the technology, please try it yourself. Below you see the illustration area (large white area) and the object
+        area (smaller grey area). We ask you to rebuild the illustration provided below in the illustration area, using the
+        objects provided in the object area, and to submit it when you are done.
+    </p>
+
+    <ol>
+        <li>
+            Rebuild the illustration below in the <b>illustration area</b>. Note that <b>only the content in the illustration area
+            will be submitted</b>.
+        </li>
+
+        <!-- Show the example that shall be rebuilt: -->
+        <img src="{% static 'example.JPG' %}"/>
+
+        <li>
+            Click "Preview" to preview your work. Click inside the illustration area to end the preview.
+        </li>
+
+        <li>
+            Click "Submit" to submit the result and advance to the next page.
+        </li>
+    </ol>
+
+    <br>
+</div>
+
+
+<!-- The container_outer is the whole area in which the picture will be rebuilt, i.e. the picture area plus the area
+     in which the objects are provided. -->
+<div id="container_outer">
+    <div id="container_inner" class="container_inner">    <!-- The picture area -->
+        <div id=selecto class="selecto-area">           <!-- The area in which the objects can be moved -->
+
+        <!-- The three test objects: -->
+            <div style="top: 460px; left: 100px; min-height: 10px!important; min-width: 5px!important" class="triangle" id="triangle"></div>
+            <div style="top: 460px; left: 50px; min-height: 10px!important; min-width: 5px!important"  class="blue_cube" id="blue_cube"></div>
+            <div style="top: 460px; left: 2px; min-height: 10px!important; min-width: 5px!important" class="red_cube" id="red_cube"></div>
+
+        <!-- Define what shall be displayed on right click: -->
+            <ul id="menu">
+                <li class="menu-item" id="id_foreground" href="javascript:foreground">Bring Forward</li>
+                <li class="menu-item" id="id_background" href="javascript:background">Send Backward</li>
+                <li class="menu-item" id="id_infront" href="javascript:infront">Bring to Front</li>
+                <li class="menu-item" id="id_inback" href="javascript:inback">Send to Back</li>
+            </ul>
+
+            <!-- The menu shall not be displayed anymore when having clicked anywhere else: -->
+            <div id="out-click"></div>
+        </div>
+    </div>
+
+    <div class="space"></div>                       <!-- The area between the container and the picture area -->
+    <div class="container_material"></div>             <!-- The container in which the objects are laying -->
+    <div class="preview" style="top: 435px; left: 0px" id="id_preview"></div>       <!-- The preview field -->
+</div>
+</div>
+<!-- Store the picture info as the variable image_info_ex: -->
+<input type="hidden" name="imageurl_trytech" id="id_imageurl_trytech" required class="form-control">
+
+<br>
+
+<!--Preview button: -->
+<input type="button" id="btn-prev" class="btn prev-btn" value="Preview" onclick="Prev()"/>
+
+<!-- Create another button that looks like the submit button that first checks whether the image is rebuilt correctly: -->
+<!-- Note that this button cannot submit the page but only checks the image! -->
+<input type="button" class="otree-btn-next btn btn-primary" id="check" value="Submit" onclick="Submit()">
+<button class="otree-btn-next btn btn-primary" style="display:none;" id="next_page">Submit</button>
+
+<!-- Create the submit button: -->
+<input type="button" class="btn btn-primary" id="next" value="Submit" style="display: none"/>
+<br>
+<br>
+<!-- This is the div to display potential error messages: -->
+<div id="check_error" class="form-control-errors"></div>
+<br>
+<br>
+</body>
+
+<input class="textinput" name="positions_var" id="positions_id" style="display: none">
+{% endblock %}
+
+
+{% block scripts %}
+<!-- Link the above scripts to the corresponding JavaScript sheet -->
+<script src="{{ static 'node_modules/selecto/dist/selecto.js' }}"></script>
+<script src="{{ static 'node_modules/moveable/dist/moveable.js' }}"></script>
+<script src="{{ static 'node_modules/dom-to-image/dist/dom-to-image.min.js' }}"></script>
+<script src="{{ static 'trytech.js' }}"></script>
+
+
+<script>
+// For whatever reason, the timeout script needs to be implemented directly:
+    // which one?
+window.onbeforeunload=function() {
+           //  saveImageData(elementids);
+            SaveImage();
+            storeChanges();
+};
+
+    window.addEventListener('unload', function() {
+    storeChanges();
+    // saveImageData(elementids);
+    SaveImage();
+});
+
+// Apply stored changes on page load
+window.addEventListener('load', applyStoredChanges);
+
+window.onload=function() {
+  reloaded = js_vars.reloaded
+        if (reloaded < 1 ) {
+        localStorage.clear();
+        resetToCSSPosition();
+    }
+  liveSend({reload:1})
+};
+
+
+// Apply stored changes
+function applyStoredChanges() {
+  const storedChanges = localStorage.getItem('element_changes');
+  if (storedChanges) {
+    const changes = JSON.parse(storedChanges);
+
+    elementids.forEach(id => {
+      const item = document.getElementById(id);
+      const change = changes[id];
+
+      if (change) {
+        item.style.top = change.top;
+        item.style.left = change.left;
+        item.style.width = change.width;
+        item.style.height = change.height;
+        item.style.transform = change.transform;
+        item.style.zIndex = change.zIndex;
+        // Apply more properties as needed
+      }
+    });
+  }
+};
+
+
+// Store changes in local storage
+function storeChanges() {
+  const changes = {};
+  const positions_id = document.getElementById("positions_id")
+
+  elementids.forEach(id => {
+    const item = document.getElementById(id);
+    changes[id] = {
+      top: item.style.top,
+      left: item.style.left,
+      width: item.style.width,
+      height: item.style.height,
+      transform: item.style.transform,
+      zIndex: item.style.zIndex,
+      // Add more properties as needed
+    };
+  });
+
+  localStorage.setItem('element_changes', JSON.stringify(changes));
+  positions_id.value = JSON.stringify(changes)
+    console.log(positions_id.value, "this is the positionids value")
+  liveSend({'elements_pos': JSON.stringify(changes)});
+}
+
+// Store original CSS styles and default values
+const originalStyles = {};
+
+elementids.forEach(id => {
+  const item = document.getElementById(id);
+  originalStyles[id] = {
+    top: item.style.top,
+    left: item.style.left,
+    width: item.style.width,
+    height: item.style.height,
+    zIndex: item.style.zIndex,
+    transform: item.style.transform
+  };
+});
+
+// Reset elements to their original CSS position
+function resetToCSSPosition() {
+    console.log("we reset")
+  elementids.forEach(id => {
+    const item = document.getElementById(id);
+    const originalStyle = originalStyles[id];
+    if (originalStyle) {
+      item.style.top = originalStyle.top;
+      item.style.left = originalStyle.left;
+      item.style.width = originalStyle.width;
+      item.style.height = originalStyle.height;
+      item.style.zIndex = originalStyle.zIndex;
+      item.style.transform = originalStyle.transform;
+    }
+  });
+};
+
+// Store current page and content for previous instructions
+    sessionStorage.setItem("p4_trytech", "true");
+     // Take the new contents:
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c4", content)
+        sessionStorage.setItem("t4", title)
+    }
+
+</script>
+
+{% endblock %}

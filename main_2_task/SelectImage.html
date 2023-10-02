@@ -1,0 +1,292 @@
+{{ block title }}
+    Earn an extra bonus!
+{{ endblock }}
+
+{{ block styles }}
+
+<link rel="stylesheet" type="text/css" href="{{ static 'style_select.css' }}">
+<link rel="stylesheet" type="text/css" href="{{ static 'style_material.css' }}">
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+
+{{ endblock }}
+
+{{ block content }}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<div id="confirm" style="display:none">
+    Are you sure that you want to select the below illustration?
+</div>
+<div id="content">
+<u><b>Your task</b></u>
+ <p>Please select your best innovative illustration.</p>
+<u><b>Your extra bonus payment</b></u>
+    <p>Your extra bonus payment may depend on whether your selected illustration is <b>innovative</b>.</p>
+    <p>Remember that <b>innovative</b> illustrations are <b>original</b> (i.e. the illustrated word is not among a random selection of 100 illustrations by other workers in this task),
+        and can be <b>identified</b> by a relatively large fraction of individuals, who only see the illustration and have to identify the illustrated word.</p>
+    </p>
+</div>
+
+<div id="container_grid" class="container_grid">
+<div id="container_outer" class="container_outer">
+    <a class="container_inner_button" href="#" id="container_inner_1_button" onclick="handleButtonClick(1)">
+    <div id="container_inner_1" class="container_inner">
+        <div id=selecto class="selecto-area">
+            <div id="word_im1" class="word-div"></div>
+            <div style="top: 460px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc1_im1"></div>
+            <div style="top: 485px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc2_im1"></div>
+            <div style="top: 510px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc3_im1"></div>
+
+            <div style="top: 460px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc1_im1"></div>
+            <div style="top: 485px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc2_im1"></div>
+            <div style="top: 510px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc3_im1"></div>
+
+            <div style="top: 460px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec1_im1"></div>
+            <div style="top: 485px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec2_im1"></div>
+            <div style="top: 510px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec3_im1"></div>
+
+            <div style="top: 460px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc1_im1"></div>
+            <div style="top: 485px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc2_im1"></div>
+            <div style="top: 510px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc3_im1"></div>
+
+            <div style="top: 460px; left: 240px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros1_im1"></div>
+            <div style="top: 460px; left: 260px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros2_im1"></div>
+            <div style="top: 460px; left: 280px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros3_im1"></div>
+            <div style="top: 460px; left: 300px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros4_im1"></div>
+
+            <div style="top: 460px; left: 350px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas1_im1"></div>
+            <div style="top: 460px; left: 370px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas2_im1"></div>
+            <div style="top: 460px; left: 390px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas3_im1"></div>
+            <div style="top: 460px; left: 410px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas4_im1"></div>
+
+            <div style="top: 545px; left: 10px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow1_im1"></div>
+            <div style="top: 545px; left: 55px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow2_im1"></div>
+            <div style="top: 545px; left: 100px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow3_im1"></div>
+            <div style="top: 545px; left: 145px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow4_im1"></div>
+            <div style="top: 545px; left: 190px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow5_im1"></div>
+            <div style="top: 545px; left: 235px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow6_im1"></div>
+
+            <div style="top: 525px; left: 320px; min-height: 10px!important; min-width: 6px!important" class="blackcircle" id="blac1_im1"></div>
+            <div style="top: 525px; left: 400px; min-height: 10px!important; min-width: 6px!important" class="blackcircle" id="blac2_im1"></div>
+        </div>
+</div>
+
+</a>
+</div>
+</div>
+
+<input type="hidden" name="bonus_image" id="selected">
+<div id="buttons" style="display:none; position:absolute; top:630px" >
+<input type="button" id="back_button" class="otree-btn btn" style="background-color:#ddd" value="Go Back" onclick="Back()"/>
+<!-- Create the submit button: -->
+    <input type="button" id="confirm_button" class="otree-btn-next btn btn-primary" value="Confirm" onclick="Next()"/>
+</div>
+<br>
+<div display="none" style="top: 425px; left: 0px;">
+        <button class="otree-btn-next btn btn-primary" style="display:none" id="next_button"></button>
+</div>
+<br>
+
+</body>
+{{ endblock }}
+
+{{ block scripts }}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const selectoArea = document.getElementById('selecto');
+    const numContainers = js_vars.images;
+    let containerIds = [];
+    const gridContainer = document.getElementById('container_grid');
+
+    // Function to replace inner HTML of word div
+    function replaceWordDivText(containerIndex) {
+        const wordDiv = document.getElementById(`word_im${containerIndex}`);
+        if (wordDiv && js_vars.words[containerIndex - 1]) {
+            wordDiv.innerHTML = js_vars.words[containerIndex - 1];
+            console.log(js_vars.words);
+        }
+    }
+
+    for (let i = 2; i <= numContainers; i++) {
+        const containerOuter = document.createElement('div');
+        containerOuter.className = 'container_outer';
+
+        const aElement = document.createElement('a');
+        aElement.href = "#";
+        aElement.className = 'container_inner_button';
+        aElement.onclick = function() {
+            handleButtonClick(i);
+        };
+
+        const containerInner = document.createElement('div');
+        const containerId = `container_inner_${i}`;
+        containerInner.id = containerId;
+        containerIds.push(containerId);
+        containerInner.className = 'container_inner';
+
+        const selectoClone = selectoArea.cloneNode(true);
+        const selectoCloneId = `selecto_im${i}`;
+        selectoClone.id = selectoCloneId;
+        selectoClone.classList.remove('selecto-area');
+
+        selectoClone.querySelectorAll('div').forEach((element, index) => {
+            const originalId = element.getAttribute('id');
+            const newSuffix = `_im${i}`;
+            const newId = originalId.replace('_im1', newSuffix);
+            element.setAttribute('id', newId);
+        });
+
+        aElement.appendChild(containerInner);
+        containerOuter.appendChild(aElement);
+        gridContainer.appendChild(containerOuter);
+        containerInner.appendChild(selectoClone);
+
+        // containerOuter.appendChild(aElement);
+        // gridContainer.appendChild(containerOuter);
+        replaceWordDivText(i);
+    }
+
+    let changesList = js_vars.all_positions;
+    applyStoredChanges(changesList);
+
+    for (let i=1; i <= numContainers; i++) {
+        console.log("are we executing?", i)
+        hideElementsOutsideContainer(i);
+    };
+
+    document.getElementById("word_im1").innerHTML = "{{ word1 }}";
+});
+
+
+function applyStoredChanges(changesList) {
+    changesList.forEach(changes => {
+        Object.keys(changes).forEach(id => {
+            const item = document.getElementById(id);
+            const change = changes[id];
+
+            if (item && change) {
+                item.style.top = change.top || '';
+                item.style.left = change.left || '';
+                item.style.width = change.width || '';
+                item.style.height = change.height || '';
+                item.style.transform = change.transform || '';
+                item.style.zIndex = change.zIndex || '';
+            }
+        });
+    });
+};
+
+function hideElementsOutsideContainer(currentContainerIndex) {
+    // Hide elements that are outside the inner container
+    const innerContainer = document.getElementById(`container_inner_${currentContainerIndex}`);
+    const innerContainerRect = innerContainer.getBoundingClientRect();
+    const allElements = innerContainer.querySelectorAll('.yellowcircle, .redcircle, .greencircle, .bluecircle, .brownstick, .blackstick, .bow, .blackcircle');
+    console.log("which inner container?", innerContainer)
+    allElements.forEach(element => {
+        const elementRect = element.getBoundingClientRect();
+        if (
+            elementRect.bottom < innerContainerRect.top ||
+            elementRect.top > innerContainerRect.bottom ||
+            elementRect.right < innerContainerRect.left ||
+            elementRect.left > innerContainerRect.right
+            /*
+            elementRect.top < innerContainerRect.top ||
+            elementRect.bottom > innerContainerRect.bottom ||
+            elementRect.left < innerContainerRect.left ||
+            elementRect.right > innerContainerRect.right
+            */
+
+        ) {
+            element.style.display = 'none';
+        } else {
+            element.style.display = 'block';
+        }
+    });
+};
+
+let contentDiv = document.getElementById("content");
+let buttonDiv = document.getElementById("buttons");
+let confirmDiv = document.getElementById("confirm");
+
+function handleButtonClick(containerIndex) {
+    let containerDivs = document.querySelectorAll(".container_inner");
+    let containerDivsOuter = document.querySelectorAll(".container_outer");
+
+    containerDivs.forEach((containerDiv, index) => {
+        if (containerIndex === index + 1) {
+            containerDiv.style.display = "block"; // Show the clicked container_inner
+            containerDiv.classList.add("clicked"); // Add a class to indicate it's clicked
+        } else {
+            containerDiv.style.display = "none"; // Hide other container_inner divs
+            containerDiv.classList.remove("clicked"); // Remove the class from other containers
+        }
+    });
+
+        containerDivsOuter.forEach((containerDiv, index) => {
+        if (containerIndex === index + 1) {
+            containerDiv.style.display = "block"; // Show the clicked container_inner
+        } else {
+            containerDiv.style.display = "none"; // Hide other container_inner divs
+        }
+    });
+
+    // Hide the content div
+    contentDiv.style.display = "none";
+
+    // Show the buttons div
+    buttonDiv.style.display = "block";
+
+    // Hide the "confirm" div
+    confirmDiv.style.display = "block";
+}
+
+function Back() {
+    // Show all container_inner divs
+    let containerDivs = document.querySelectorAll(".container_inner"); // needs to be generated inside otherwise it gets only the first one
+    let containerDivsOuter = document.querySelectorAll(".container_outer");
+
+    containerDivs.forEach(containerDiv => {
+        containerDiv.style.display = "block";
+        containerDiv.classList.remove("clicked"); // Remove the clicked class
+    });
+
+    containerDivsOuter.forEach(containerDiv => {
+            containerDiv.style.display = "block"; // Show the clicked container_inner
+        });
+
+    // Show the content div
+    contentDiv.style.display = "block";
+
+    // Hide the buttons div
+    buttonDiv.style.display = "none";
+
+    // Hide the "confirm" div
+    confirmDiv.style.display = "none";
+}
+
+function Next() {
+    // Find the container with the "clicked" class
+    const clickedContainer = document.querySelector(".container_inner.clicked");
+
+    if (clickedContainer) {
+        // Extract the container index from the container's id
+        const containerId = clickedContainer.id;
+        const containerIndex = parseInt(containerId.split("_")[2]);
+
+        // Save the number of the clicked div in a hidden form field
+        const selected = document.getElementById("selected");
+        selected.value = containerIndex;
+
+        // Click the button with the id "next_button"
+        const nextButton = document.getElementById("next_button");
+        nextButton.click();
+    }
+}
+
+</script>
+{{ endblock }}

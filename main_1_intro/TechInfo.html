@@ -1,0 +1,95 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div id="title">
+    Technology
+</div>
+{% endblock %}
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<!-- Add the link to the previous instructions: -->
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<div id="content">
+
+    <p>
+        On the next page you will see objects that you can move, resize and rotate in the following ways:
+    </p>
+
+    <p>
+        <u>Move</u>: Select the object you want to <b>move</b>, <b>drag it</b> and <b>drop it</b>.
+    </p>
+
+    <p>
+        <u>Rotate</u>: Select the object you want to rotate. A control box will appear (see Figure 1).
+        To rotate objects, click on the <b>green circle</b> on the top and <b>rotate it</b>.
+    </p>
+
+    <p>
+        <u>Resize and rescale</u>: Select the object you want to resize. A control box will appear (see Figure 1).
+        <b>You can resize objects by dragging the blue circles</b> in the desired direction.
+    </p>
+
+    <p>
+        <u>Change layer</u>: <b>Right-click</b> on an object to <b>change its layer</b>.
+        A menu will appear (see Figure 2), in which you can select between different options.
+        To bring an object to the front of all overlapping elements, click ‘Send to Front’.
+        To send an object to the back of all overlapping elements, click ‘Send to Back’.
+        To bring an object one step closer to the front, click ‘Bring Forward’.
+        To send an object one step toward the back, click ‘Send Backward’.
+    </p>
+
+    <br>
+
+    <p style="text-align: center">
+        <!-- Insert the screenshot containing the control box -->
+        <img src="{% static 'photo_controlbox.JPG' %}"/>
+        <br>
+        Figure 1: Control box (on click)
+    </p>
+
+    <br>
+
+    <p style="text-align: center">
+        <!-- Insert the screenshot containing the menu -->
+        <img src="{% static 'photo_menu.jpg' %}"/>
+        <br>
+        Figure 2: Menu (on right click)
+    </p>
+
+    <br>
+</div>
+
+<button class="otree-btn-next btn btn-primary" id="mybtn"> Next </button>
+
+<br>
+<br>
+{% endblock%}
+
+
+{% block scripts %}
+<script>
+    // Store current page and content for previous instructions
+    sessionStorage.setItem("p3_techinfo", "true");
+
+     // Take the new contents:
+    let content = document.getElementById("content").innerHTML
+    let title = document.getElementById("title").innerHTML
+
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem("c3", content)
+        sessionStorage.setItem("t3", title)
+    }
+</script>
+{% endblock %}

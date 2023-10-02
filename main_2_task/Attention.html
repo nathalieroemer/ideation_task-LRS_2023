@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}
+    <div id="title">
+       Attention check
+    </div>
+{% endblock %}
+
+
+{% block content %}
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+<p>This is an attention check. If you pass it, you will advance on the next page of the task. If you do not pass it, you cannot participate in this task. </p>
+{{ formfields }}
+
+</div>
+
+<br>
+
+<br>
+
+<button class="otree-btn-next btn btn-primary">Next</button>
+<br>
+<br>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    sessionStorage.setItem("p7_attention", "true");
+</script>
+{% endblock %}

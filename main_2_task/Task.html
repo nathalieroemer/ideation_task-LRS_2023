@@ -1,0 +1,381 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<div id="tasktitle">
+    Your task
+</div>
+
+<meta charset="UTF-8">
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{{ static 'style_task.css' }}">
+<link rel="stylesheet" type="text/css" href="{{ static 'style_material.css' }}">
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+
+{% block content %}
+<body>
+<div class="prevIns">
+    <u>
+        <a onclick="window.open('{% static 'Instructions.html' %}', '_blank', 'location=yes, height=570, width=520, scrollbars=yes, status=yes');">
+            Click to review previous instructions
+        </a>
+    </u>
+</div>
+
+<br>
+    <p>
+        Please proceed as follows:
+    </p>
+
+    <ol>
+        <li>
+            Illustrate your word in the illustration area (large white area). Only the content of this area will be saved when you submit your
+            illustration. Everything outside will be cropped out.
+        </li>
+
+        <li>
+            Indicate the word you illustrated in the text field.
+        </li>
+
+        <li>
+            Click "Preview" to preview your illustration. Click inside the illustration area to end
+            the preview.
+        </li>
+
+        <li>
+            Click "Submit" to submit your illustration. Upon clicking "Submit", your illustration will be saved and you will not be able to make any more changes.
+            All objects will go back in the object area (smaller grey area).
+            You can restart with 1 for your next illustration.
+        </li>
+
+    </ol>
+
+    <br>
+
+</div>
+
+<div id="alertdiv" style="color:darkred; display:none">
+    Please remember to submit your illustration before the time is up.
+    </div>
+<br>
+
+<!-- Insert the area for the task -->
+<div id="container_outer">
+    <div id="container_inner" class="container_inner">
+        <div id=selecto class="selecto-area">
+            <div style="top: 460px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc1"></div>
+            <div style="top: 485px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc2"></div>
+            <div style="top: 510px; left: 20px; min-height: 10px!important; min-width: 6px!important" class="yellowcircle" id="yelc3"></div>
+
+            <div style="top: 460px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc1"></div>
+            <div style="top: 485px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc2"></div>
+            <div style="top: 510px; left: 70px; min-height: 10px!important; min-width: 6px!important" class="redcircle" id="redc3"></div>
+
+            <div style="top: 460px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec1"></div>
+            <div style="top: 485px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec2"></div>
+            <div style="top: 510px; left: 120px; min-height: 10px!important; min-width: 6px!important" class="greencircle" id="grec3"></div>
+
+            <div style="top: 460px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc1"></div>
+            <div style="top: 485px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc2"></div>
+            <div style="top: 510px; left: 170px; min-height: 10px!important; min-width: 6px!important" class="bluecircle" id="bluc3"></div>
+
+            <div style="top: 460px; left: 240px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros1"></div>
+            <div style="top: 460px; left: 260px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros2"></div>
+            <div style="top: 460px; left: 280px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros3"></div>
+            <div style="top: 460px; left: 300px; min-height: 10px!important; min-width: 6px!important" class="brownstick" id="bros4"></div>
+
+            <div style="top: 460px; left: 350px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas1"></div>
+            <div style="top: 460px; left: 370px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas2"></div>
+            <div style="top: 460px; left: 390px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas3"></div>
+            <div style="top: 460px; left: 410px; min-height: 10px!important; min-width: 6px!important" class="blackstick" id="blas4"></div>
+
+            <div style="top: 545px; left: 10px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow1"></div>
+            <div style="top: 545px; left: 55px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow2"></div>
+            <div style="top: 545px; left: 100px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow3"></div>
+            <div style="top: 545px; left: 145px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow4"></div>
+            <div style="top: 545px; left: 190px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow5"></div>
+            <div style="top: 545px; left: 235px; min-height: 10px!important; min-width: 6px!important" class="bow" id="bbow6"></div>
+
+            <div style="top: 525px; left: 320px; min-height: 10px!important; min-width: 6px!important" class="blackcircle" id="blac1"></div>
+            <div style="top: 525px; left: 400px; min-height: 10px!important; min-width: 6px!important" class="blackcircle" id="blac2"></div>
+
+
+            <ul id="menu">
+                <li class="menu-item" id="id_foreground" href="javascript:foreground">
+                    Bring Forward
+                </li>
+
+                <li class="menu-item" id="id_background" href="javascript:background">
+                    Send Backward
+                </li>
+
+                <li class="menu-item" id="id_infront" href="javascript:infront">
+                    Bring to Front
+                </li>
+
+                <li class="menu-item" id="id_inback" href="javascript:inback">
+                    Send to Back
+                </li>
+            </ul>
+
+            <div id="out-click"></div>
+
+        </div>
+
+    </div>
+
+    <div class="space"></div>
+    <div class="container_material"></div>
+    <div class="preview" style="top: 425px; left: 0px" id="id_preview" ></div>
+
+</div>
+
+<br>
+    <p>
+        <label for="word">
+            What word have you illustrated?
+        </label>
+
+        <br>
+        <input class="textinput" name="word" id="word" required oninput="validateword(document.getElementById('word').value)">
+    </p>
+
+
+<!-- Store the picture info as the variable image_info_ex: -->
+<input type="hidden" name="imageurl" id="id_imageurl" class="form-control">
+<br>
+
+<!--Preview button: -->
+<input type="button" id="btn-prev" class="btn prev-btn" value="Preview" onclick="Prev()"/>
+
+<!-- Create another button that looks like the submit button that first checks whether the image is rebuilt correctly: -->
+<!-- Note that this button cannot submit the page but only checks the image! -->
+<input type="button" class="btn btn-primary" id="check" value="Submit" onclick="Submit()">
+<button class="otree-btn-next btn btn-primary" style="display:none;" id="next_page">Submit</button>
+
+<br>
+<br>
+<!-- This is the div to display potential error messages: -->
+<div id="check_error" class="form-control-errors"></div>
+<br>
+
+</body>
+
+<input class="textinput" name="positions_var" id="positions_id" style="display: none">
+<!-- Collect the moments at which the system recognizes inactivity: -->
+<label for="warnings"></label>
+<input class="textinput" name="warnings" id="warnings" style="display: none">
+{% endblock %}
+
+
+
+{% block scripts %}
+<script src="{{ static 'node_modules/selecto/dist/selecto.js' }}"></script>
+<script src="{{ static 'node_modules/moveable/dist/moveable.js' }}"></script>
+<script src="{{ static 'node_modules/dom-to-image/dist/dom-to-image.min.js' }}"></script>
+<script src="{{ static 'task.js' }}"></script>
+<!-- Link the above scripts to the corresponding JavaScript sheet -->
+
+<script>
+    var elementids = [
+    'yelc1', 'yelc2', 'yelc3', 'redc1', 'redc2', 'redc3', 'grec1', 'grec2', 'grec3',
+    'bluc1', 'bluc2', 'bluc3', 'bros1', 'bros2', 'bros3', 'bros4', 'blas1', 'blas2',
+    'blas3', 'blas4', 'bbow1', 'bbow2', 'bbow3', 'bbow4', 'bbow5', 'bbow6', 'blac1', 'blac2'
+]
+
+// Store changes in local storage
+function storeChanges() {
+  const changes = {};
+  const positions_id = document.getElementById("positions_id")
+
+  elementids.forEach(id => {
+    const item = document.getElementById(id);
+    changes[id] = {
+      top: item.style.top,
+      left: item.style.left,
+      width: item.style.width,
+      height: item.style.height,
+      transform: item.style.transform,
+      zIndex: item.style.zIndex,
+      // Add more properties as needed
+    };
+  });
+
+  // store element changes to restore them when reloading the page
+  localStorage.setItem('element_changes', JSON.stringify(changes));
+  positions_id.value = JSON.stringify(changes)
+  liveSend({'elements_pos': JSON.stringify(changes)});
+};
+
+
+// Apply stored changes
+function applyStoredChanges() {
+  const storedChanges = localStorage.getItem('element_changes');
+  if (storedChanges) {
+    const changes = JSON.parse(storedChanges);
+
+    elementids.forEach(id => {
+      const item = document.getElementById(id);
+      const change = changes[id];
+
+      if (change) {
+        item.style.top = change.top;
+        item.style.left = change.left;
+        item.style.width = change.width;
+        item.style.height = change.height;
+        item.style.transform = change.transform;
+        item.style.zIndex = change.zIndex;
+        // Apply more properties as needed
+      }
+    });
+  }
+};
+
+// Attach event listener to store changes
+window.addEventListener('unload', storeChanges);
+
+// Apply stored changes on page load
+window.addEventListener('load', applyStoredChanges);
+
+    var forbiddenchars = /[\\ @!?$€£&%=+#"§/(){}`´'*~,;.:_^°<>²³|µäüöÄÖÜßÀÁÂÃÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕØÙÚÛÝàáâãåæçèéêëìíîïðñòóôõøùúûýÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž-]/;
+    var forbiddenspace = /[ ]/;
+    var numbers = /[1234567890]/;
+
+    // Load the dictionary:
+    AmericanEnglish = js_vars.dictionary
+
+// Function checks if word is in list
+function is_word_in_list(word, word_list) {
+    return word_list ? word_list.includes(word) : false;
+}
+// Validate entered word
+    function validateword() {
+        const word = document.getElementById('word').value
+        validated = 0
+        console.log(word, "this is the word and is it validated?", validated)
+        if(forbiddenspace.test(word)) {
+            document.getElementById('word').setCustomValidity('You are only allowed to illustrate single words (no blanks).');
+            document.getElementById('word').reportValidity();
+        }
+        else if(forbiddenchars.test(word)) {
+            document.getElementById('word').setCustomValidity('You are not allowed to use special characters.');
+            document.getElementById('word').reportValidity();
+
+        }
+        else if(numbers.test(word)) {
+            document.getElementById('word').setCustomValidity('You are not allowed to use numbers.');
+            document.getElementById('word').reportValidity();
+
+        }
+        else if(word === "") {
+            document.getElementById('word').setCustomValidity('Please enter the illustrated word.');
+            document.getElementById('word').reportValidity();
+
+        }
+        else if (!AmericanEnglish.includes(word.toLowerCase())) {
+            document.getElementById('word').setCustomValidity('Please check the spelling of the word.');
+            document.getElementById('word').reportValidity();
+
+        }
+        // Here, we should try to implement the "same word"-warning:
+        else if (is_word_in_list(word.toLowerCase, js_vars.words_before)) {
+            document.getElementById('word').setCustomValidity('You just submitted this word.');
+            document.getElementById('word').reportValidity();
+        }
+        else {
+            document.getElementById('word').setCustomValidity('');
+            //document.getElementById('word').reportValidity();
+            // Add the word and its time of completion to the list:
+            validated = 1
+            console.log("we validate")
+        }
+    };
+</script>
+
+
+
+<script>
+// We update every second the time left and the clicks made
+window.setInterval(update, 1000);
+let submit = 0
+let validated = 0
+
+// Store original CSS styles and default values
+const originalStyles = {};
+elementids.forEach(id => {
+  const item = document.getElementById(id);
+  originalStyles[id] = {
+    top: item.style.top,
+    left: item.style.left,
+    width: item.style.width,
+    height: item.style.height,
+    zIndex: item.style.zIndex,
+    transform: item.style.transform
+  };
+});
+
+// Reset elements to their original CSS position
+function resetToCSSPosition() {
+  elementids.forEach(id => {
+    const item = document.getElementById(id);
+    const originalStyle = originalStyles[id];
+    if (originalStyle) {
+      item.style.top = originalStyle.top;
+      item.style.left = originalStyle.left;
+      item.style.width = originalStyle.width;
+      item.style.height = originalStyle.height;
+      item.style.zIndex = originalStyle.zIndex;
+      item.style.transform = originalStyle.transform;
+    }
+  });
+};
+
+// Onload elements are restored or reset to their initial position
+window.onload=function() {
+    time_left = js_vars.time_left;
+    time_worked = js_vars.time_worked
+    reloaded = js_vars.reloaded
+    validated = 0
+    if (reloaded < 1 ) {
+         localStorage.clear();
+        resetToCSSPosition();
+    }
+    liveSend({reload:1})
+    };
+
+// Check attention by saving seconds in which something was clicked
+function checkAttention() {
+        document.getElementById('container_outer').addEventListener("click", function() {
+            liveSend({click: 1})
+        })
+};
+
+// Constantly update the time that is left and the clicks made
+function update() {
+    CheckTimeleft();
+    checkAttention();
+}
+
+
+// Check how much time is left and display alert if only 20 seconds left
+function CheckTimeleft() {
+        time_left --;
+        if (time_left < 20) {
+            console.log("before time is up")
+            if (document.getElementById('alertdiv').style.display==="none") {
+                document.getElementById('alertdiv').style.display="block"
+            }
+        }
+};
+
+// Store page info for previous instructions
+sessionStorage.setItem("p6_task", "true");
+
+</script>
+
+{% endblock %}

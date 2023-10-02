@@ -1,0 +1,88 @@
+
+<style>
+    ._otree-content{
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+    }
+
+    .page-header{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-top: 40px;
+    }
+
+    h2{
+        margin-bottom: 0.5rem;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.2;
+        color: inherit;
+        font-size: 2rem;
+    }
+
+    body{
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+    }
+</style>
+
+<div class="content">
+ <div class="otree-body container">
+
+        <!-- Welcome -->
+        <h2 class="otree-title page-header" id="title_welcome"></h2>
+
+        <div class="_otree-content">
+            <div id="content_welcome"></div>
+
+        </div>
+
+        <!-- Instructions -->
+        <h2 class="otree-title page-header" id="title_instr"></h2>
+
+        <div class="_otree-content">
+            <div id="content_instr"></div>
+        </div>
+
+ </div>
+</div>
+
+
+
+<script>
+    // Here, we check at which page the player is and which contents shall be displayed
+    if (typeof(Storage) !== "undefined") {
+        if (sessionStorage.getItem("p1_welcome") || sessionStorage.getItem("p2_consent") || sessionStorage.getItem("p3_instr")) {
+            // for the first one we show the welcome page on the welcome page and on the consent page
+            document.getElementById("title_welcome").innerHTML = sessionStorage.getItem("t1");
+            document.getElementById("content_welcome").innerHTML = sessionStorage.getItem("c1");
+
+            if (sessionStorage.getItem("p3_task")) {
+                // on the first page of the trust game (sender perspective ) we additionally show the consent page so we add it below
+                document.getElementById("title_instr").innerHTML = sessionStorage.getItem("t2");
+                document.getElementById("content_instr").innerHTML = sessionStorage.getItem("c2");
+            }
+
+        }
+
+    else {
+            document.getElementById("title_welcome").innerHTML = "Previous instructions"
+            document.getElementById("content_welcome").innerHTML = "<p>There are no previous instructions, yet.</p>";
+        }
+    }
+
+    else{
+        document.getElementById("content_welcome").innerHTML = "Sorry, your browser does not support Web Storage." +
+            "Please use another browser to display the previous instructions."
+    }
+
+</script>
+</html>

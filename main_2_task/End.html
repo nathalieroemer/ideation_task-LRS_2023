@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load otree staticfiles %}
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+    {% block title %}
+        You have completed the study
+    {% endblock %}
+
+
+    {% block content %}
+    <p>
+        Unfortunately you did not pass the attention check. Please return your submission to receive a partial payment of £0.50.
+    </p>
+{% endblock %}

@@ -1,0 +1,287 @@
+{{ block title }}
+    Questionnaire (part 2/2)
+{{ endblock }}
+
+{{ block styles }}
+<style>
+
+.hoverTable tr:not(:first-child):hover {
+	  background-color: rgb(204,220,235);
+}
+
+.otree-body{
+    max-width: 70% !important;
+}
+
+.own-nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.h_own {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.input_radio_td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.noteBoxes {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.type1 {
+    border-color: #E76F51;
+    background-color: rgba(231, 111, 81, 0.1);
+}
+
+.type2 {
+    border-color: #2A9D8F;
+    background-color: rgba(42, 157, 143, 0.1);
+}
+
+.type3 {
+    border-color: rgba(0, 150, 199, 0.2);
+    background-color: rgba(0, 150, 199, 0.03);
+}
+
+.type4 {
+    border-color: #00B353;
+    background-color: rgba(0, 179, 83, 0.1);
+}
+
+.note-box-icon {
+    width: 200px;
+    padding-right: 10px;
+}
+.form-check-input {
+    vertical-align: middle !important;
+}
+</style>
+
+{{ endblock }}
+
+{{ block content }}
+
+<form>
+  <p>
+        Please use the following 1-5 scale to indicate how often each phrase describes your thinking.
+        Keep in mind that your responses should reflect your own thoughts, rather than how you think you should act.
+    </p>
+
+    <p style="counter-increment: initial">
+        Please select the answer that is closest to the truth for each item.
+    </p>
+    <br>
+
+   <table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2 hoverTable">
+        <tbody>
+            <tr>
+                <td></td>
+                <td style="text-align: center; width: 140px">1<br>Never</td>
+                <td style="text-align: center; width: 140px">2<br>About once a year</td>
+                <td style="text-align: center; width: 140px">3<br>About once or twice a month</td>
+                <td style="text-align: center; width: 140px">4<br>About once or twice a week</td>
+                <td style="text-align: center; width: 140px">5<br>About every day and sometimes more than once a day</td>
+            </tr>
+            <tr>
+                <td width="50%" style="text-align: left">
+                    {{ form.ribs1.label }}
+                </td>
+                {{ for choice in form.ribs1 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs2.label }}
+                </td>
+                {{ for choice in form.ribs2 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs3.label }}
+                </td>
+                {{ for choice in form.ribs3 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs4.label }}
+                </td>
+                {{ for choice in form.ribs4 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs5.label }}
+                </td>
+                {{ for choice in form.ribs5 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs6.label }}
+                </td>
+                {{ for choice in form.ribs6 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+        </tbody>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2 hoverTable">
+        <tbody>
+            <tr>
+                <td></td>
+                <td style="text-align: center; width: 140px">1<br>Never</td>
+                <td style="text-align: center; width: 140px">2<br>About once a year</td>
+                <td style="text-align: center; width: 140px">3<br>About once or twice a month</td>
+                <td style="text-align: center; width: 140px">4<br>About once or twice a week</td>
+                <td style="text-align: center; width: 140px">5<br>About every day and sometimes more than once a day</td>
+            </tr>
+            <tr>
+                <td width="50%" style="text-align: left">
+                    {{ form.ribs7.label }}
+                </td>
+                {{ for choice in form.ribs7 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs8.label }}
+                </td>
+                {{ for choice in form.ribs8 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs9.label }}
+                </td>
+                {{ for choice in form.ribs9 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs10.label }}
+                </td>
+                {{ for choice in form.ribs10 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs11.label }}
+                </td>
+                {{ for choice in form.ribs11 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs12.label }}
+                </td>
+                {{ for choice in form.ribs12 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+        </tbody>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped radiogrid2 hoverTable">
+        <tbody>
+            <tr>
+                <td></td>
+                <td style="text-align: center; width: 140px">1<br>Never</td>
+                <td style="text-align: center; width: 140px">2<br>About once a year</td>
+                <td style="text-align: center; width: 140px">3<br>About once or twice a month</td>
+                <td style="text-align: center; width: 140px">4<br>About once or twice a week</td>
+                <td style="text-align: center; width: 140px">5<br>About every day and sometimes more than once a day</td>
+            </tr>
+            <tr>
+                <td width="50%" style="text-align: left">
+                    {{ form.ribs13.label }}
+                </td>
+                {{ for choice in form.ribs13 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs14.label }}
+                </td>
+                {{ for choice in form.ribs14 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs15.label }}
+                </td>
+                {{ for choice in form.ribs15 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs16.label }}
+                </td>
+                {{ for choice in form.ribs16 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs17.label }}
+                </td>
+                {{ for choice in form.ribs17 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs18.label }}
+                </td>
+                {{ for choice in form.ribs18 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td style="text-align: left">
+                    {{ form.ribs19.label }}
+                </td>
+                {{ for choice in form.ribs19 }}
+                    <td width="50px" style="text-align: center; padding-top: 2px; padding-left: 16px">{{ choice }} &nbsp;</td>
+                {{ endfor }}
+            </tr>
+        </tbody>
+    </table>
+
+</form>
+
+<br>
+    {{ next_button }}
+<br>
+<br>
+
+</body>
+{{ endblock }}
+

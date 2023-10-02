@@ -1,0 +1,74 @@
+.bluecircle {
+  background-color: #00f;
+  border: 1px solid #00f;
+  border-radius: 100%;
+}
+
+.bluecircle, .greencircle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  pointer-events: auto;
+}
+
+.greencircle {
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 100%;
+}
+
+.yellowcircle {
+  background-color: #ff0;
+  border: 1px solid #ff0;
+  border-radius: 100%;
+}
+
+.redcircle, .yellowcircle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  pointer-events: auto;
+}
+
+.redcircle {
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 100%;
+}
+
+.brownstick {
+  background-color: #8b4513;
+  width: 6px;
+  border-radius: 30px;
+}
+
+.blackstick, .brownstick {
+  position: absolute;
+  height: 60px;
+  pointer-events: auto;
+}
+
+.blackstick {
+  background-color: #000;
+  width: 4px;
+}
+
+.blackcircle {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 3px solid #000;
+  border-radius: 90px;
+  pointer-events: auto;
+}
+
+.bow {
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  border-top-left-radius: 120px;
+  border-top-right-radius: 120px;
+  border-style: solid solid none;
+  border-color: #000 #000 transparent;
+  background-color: transparent;
+}

@@ -1,0 +1,119 @@
+.container_outer {
+  overflow: hidden;
+  position:relative;
+  height: 425px;
+  width: 480px;
+  margin-top: 20px;  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  pointer-events: auto;
+  z-index: 0;
+  border-radius: 15px;
+  border-bottom: 5px solid #dbdbdb;
+}
+
+.container_inner {
+  width: 480px;
+  position: relative;
+  border-radius: 15px;
+  border: 5px solid #dbdbdb;
+  height: 425px;
+  z-index: -1000;
+  background: none;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.container_grid {
+    border: 0px solid #ddd;
+    overflow: hidden;
+    position:relative;
+}
+
+.word-div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 9999; /* Make sure it's above other elements */
+  font-size: 22px; /* Adjust the font size as needed */
+  background-color: transparent; /* Transparent background */
+  color: black; /* Text color */
+}
+
+.container_inner_button {
+    display: inline-block;
+    padding: 0; /* Adjust padding to match initial container padding */
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0; /* Remove border-radius to match initial container */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+/* Change background color on hover */
+.container_inner_button:not(.clicked):hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Change background color on hover */
+.clicked {
+   // top: -5px;
+    position:absolute;
+    cursor: auto;
+}
+
+.clicked_prev {
+    display: block
+}
+
+
+.container_material {
+  height: 130px;
+  background: #dbdbdb;
+  z-index: -10000;
+}
+
+.preview {
+  width: 480px;
+  height: 155px;
+  border-radius: 0;
+  background: #fff;
+  position: absolute;
+  border: 5px solid #fff;
+  z-index: 500000;
+}
+
+.space {
+  width: 490px;
+  height: 25px;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+  z-index: -10000;
+  pointer-events: none;
+}
+
+.my_nextbutton {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  background-color: #007bff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}

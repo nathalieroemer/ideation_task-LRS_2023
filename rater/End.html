@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree staticfiles %}
+
+{% block styles %}
+<link href="{% static 'global/instructions.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{{  block title }}
+        You have completed the study
+{{ endblock }}
+
+{{ block content }}
+
+<div>
+    {{ if player.participant.participated_before == 0 }}
+    <p>
+        Thank you for participating in this study. Your completion code is CBMSQFOS.
+         You will receive your bonus payment, if applicable, within the next 6 days.
+    </p>
+{{ else }}
+     <p>
+        You cannot take part multiple times in this study.
+    </p>
+    {{ endif }}
+</div>
+{{ endblock }}

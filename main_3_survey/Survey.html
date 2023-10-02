@@ -1,0 +1,189 @@
+{{ block title }}
+    Questionnaire (part 1/2)
+{{ endblock }}
+{{ block styles }}
+
+<style>
+
+    .table {
+        table-layout: fixed;
+        width: 100%;
+        text-align: center;
+    }
+
+    .table tr th,
+    .table tr td {
+        padding: 10px;
+    }
+
+    .mystyle {
+        font-weight: normal;
+    }
+</style>
+
+</style>
+
+
+{{ endblock }}
+
+{{ block content }}
+
+    <p>How much did you enjoy performing this task (think of words and illustrate them)?</p>
+
+<table class="table" >
+    <tr>
+        <th class="mystyle">Not at all</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mystyle">Very much</th>
+    </tr>
+    <tr>
+         {{ for choice in form.enjoy }}
+        <td>{{ choice  }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+    {{formfield_errors 'enjoy' }}
+  <br>
+<br>
+
+    <p>How creative are you?</p>
+
+<table class="table">
+    <tr>
+        <th class="mystyle">Not creative at all</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mystyle">Very creative</th>
+    </tr>
+    <tr>
+         {{ for choice in form.creative }}
+        <td>{{ choice  }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+    {{formfield_errors 'creative' }}
+  <br>
+
+<br>
+    <p>How difficult did you find this task (think of words and illustrate them)?</p>
+
+<table class="table" >
+    <tr>
+        <th class="mystyle">Not difficult at all</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mystyle">Very difficult</th>
+    </tr>
+    <tr>
+         {{ for choice in form.difficult }}
+        <td>{{ choice  }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+    {{formfield_errors 'difficult' }}
+  <br>
+
+<br>
+
+    <p>How interesting did you find this task (think of words and illustrate them)?</p>
+
+<table class="table">
+    <tr>
+        <th class="mystyle">Not interesting at all</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mystyle">Very interesting</th>
+    </tr>
+    <tr>
+         {{ for choice in form.interest }}
+        <td>{{ choice  }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+    {{formfield_errors 'interest' }}
+  <br>
+<br>
+
+    <p>How do you see yourself: Are you someone who is willing to take risks or do you try to avoid them?</p>
+
+
+<table class="table">
+    <tr>
+        <th class="mystyle">Not willing at all to take risks</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mystyle">Very willing to take risks</th>
+    </tr>
+    <tr>
+         {{ for choice in form.risk }}
+        <td>{{ choice  }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+    {{formfield_errors 'risk' }}
+  <br>
+<br>
+
+
+    <p>Do you like to compete with others?</p>
+
+
+<table class="table">
+    <tr>
+        <th class="mystyle">I don't like competitions at all</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mystyle">I like competitions very much</th>
+    </tr>
+    <tr>
+         {{ for choice in form.competitive }}
+        <td>{{ choice  }}</td>
+        {{ endfor }}
+    </tr>
+
+</table>
+    {{formfield_errors 'competitive' }}
+  <br>
+<br>
+ <p> Please indicate your gender</p>
+    {{formfield 'female'}}
+        {{formfield_errors 'female' }}
+
+<br>
+<br>
+   <p> Do you have a red-green colorblindness?</p>
+    {{formfield 'colorblind'}}
+<br>
+<br>
+
+    {{ next_button }}
+<br>
+<br>
+
+</body>
+{{ endblock }}
+
