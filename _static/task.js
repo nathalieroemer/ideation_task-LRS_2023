@@ -131,7 +131,6 @@ const moveable = new Moveable(container, {
 
                 // Extract rotation from the matrix and convert it to degrees
                 const currentRotation = (Math.atan2(matrix.m12, matrix.m11) * 180) / Math.PI;
-                    console.log(currentRotation, "this is the rotation")
                 // Only update the rotation if it has changed
                 if (frame.rotate !== currentRotation) {
                     frame.rotate = currentRotation;
@@ -190,7 +189,6 @@ function add_controlbox() {
         if (controlbox.classList.contains("hidden-control-box")) {
             // If the control box is hidden, remove the hidden-control-box class to show it
             controlbox.classList.remove("hidden-control-box");
-            console.log(controlbox, "it contains it")
         } else {
         }
     }
@@ -214,7 +212,6 @@ function remove_controlbox() {
     if (!controlbox.classList.contains("hidden-control-box")) {
       // If the control box is shown, add the hidden-control-box class to hide it
       controlbox.classList.add("hidden-control-box");
-            console.log(controlbox, "it doesnt contains it")
     }
   }
 };
@@ -230,7 +227,6 @@ function remove_whitebox() {
 // Function submits illustration and word if there is no error
 function Submit() {
     validateword();
-        console.log("validated?", validated)
     if (document.getElementById('check_error').innerHTML === "" && validated ===1) {
         storeChanges();
         submit = 1
@@ -364,7 +360,6 @@ function SaveImage() {
       field.value = data;
       var next_button = document.getElementById("next_page");
       if (submit === 1 ) {
-                console.log("we click next button")
       next_button.click();
       }
     })

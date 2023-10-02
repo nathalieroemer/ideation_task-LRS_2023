@@ -131,7 +131,6 @@ const moveable = new Moveable(container, {
 
                 // Extract rotation from the matrix and convert it to degrees
                 const currentRotation = (Math.atan2(matrix.m12, matrix.m11) * 180) / Math.PI;
-                    console.log(currentRotation, "this is the rotation")
                 // Only update the rotation if it has changed
                 if (frame.rotate !== currentRotation) {
                     frame.rotate = currentRotation;
@@ -185,9 +184,7 @@ function add_controlbox() {
         if (controlbox.classList.contains("hidden-control-box")) {
             // If the control box is hidden, remove the hidden-control-box class to show it
             controlbox.classList.remove("hidden-control-box");
-            console.log(controlbox, "it contains it")
         } else {
-            console.log(controlbox, "it doesnt contains it")
         }
     }
 };
@@ -209,7 +206,6 @@ function remove_controlbox() {
     if (!controlbox.classList.contains("hidden-control-box")) {
       // If the control box is shown, add the hidden-control-box class to hide it
       controlbox.classList.add("hidden-control-box");
-            console.log(controlbox, "it doesnt contains it")
     }
   }
 };
@@ -378,7 +374,6 @@ function SaveImage() {
       var field = document.getElementById("id_imageurl_trytech");
       field.value = data;
       var next_button = document.getElementById("next_page");
-      console.log("we click next button")
       next_button.click();
     })
     .catch(function (error) {
